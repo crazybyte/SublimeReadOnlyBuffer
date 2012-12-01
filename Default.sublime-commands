@@ -8,5 +8,9 @@
     {
         "caption" : "Preferences: SublimeReadOnlyBuffer Settings - Default",
         "command": "open_file", "args": {"file": "${packages}/SublimeReadOnlyBuffer/SublimeReadOnlyBuffer.sublime-settings"}
+    },
+    {
+        "caption" : "Preferences: SublimeReadOnlyBuffer Settings - User",
+        "command": "open_file", "args": {"file": "${packages}/User/SublimeReadOnlyBuffer.sublime-settings"}
     }
 ]
