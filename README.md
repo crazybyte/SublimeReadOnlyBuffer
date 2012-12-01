@@ -1,7 +1,7 @@
 # Sublime Read Only Buffer
 
 SublimeReadOnlyBuffer is small plugin for setting Sublime Text 2 editor buffer(s) read-only and maintaning
-the read-only/read-wrtite state using a filename cache list.
+the read-only/read-write state of an edited file using a filename cache list.
 
 # Install
 
