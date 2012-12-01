@@ -1,0 +1,8 @@
+[
+    {
+        "keys" : ["ctrl+alt+r"], "command" : "set_read_only_buffer"
+    },
+    {
+        "keys" : ["ctrl+alt+u"], "command" : "set_read_write_buffer"
+    }
+]

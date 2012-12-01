@@ -1,7 +1,5 @@
-###SublimeText###
- 
 # SublimeText project files
-/*.sublime-project
+*.sublime-project
 *.sublime-workspace
 sftp-config*.json
 
@@ -39,5 +37,5 @@ nosetests.xml
 #Translations
 *.mo
 
-#Mr Developer
-.mr.developer.cfg
+# Sublime Text Plugins
+*.cache

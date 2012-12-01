@@ -1,0 +1,8 @@
+[
+    {
+        "keys" : ["super+shift+r"], "command" : "set_read_only_buffer"
+    },
+    {
+        "keys" : ["super+shift+u"], "command" : "set_read_write_buffer"
+    }
+]

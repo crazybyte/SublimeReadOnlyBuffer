@@ -1,0 +1,12 @@
+[
+    {
+        "caption" : "Buffer: Set read-only", "command" : "set_read_only_buffer"
+    },
+    {
+        "caption" : "Buffer: Unset read-only", "command" : "set_read_write_buffer"
+    },
+    {
+        "caption" : "Preferences: SublimeReadOnlyBuffer Settings - Default",
+        "command": "open_file", "args": {"file": "${packages}/SublimeReadOnlyBuffer/SublimeReadOnlyBuffer.sublime-settings"}
+    }
+]

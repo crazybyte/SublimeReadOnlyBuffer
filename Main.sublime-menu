@@ -1,0 +1,22 @@
+[
+    {
+        "caption": "Edit",
+        "mnemonic": "E",
+        "id": "edit",
+        "children":
+        [
+            {
+                "caption": "Buffer editing",
+                "children":
+                [
+                    {
+                        "caption" : "Read-only", "command" : "set_read_only_buffer"
+                    },
+                    {
+                        "caption" : "Read-write", "command" : "set_read_write_buffer"
+                    }
+                ]
+            }
+        ]
+    }
+]
