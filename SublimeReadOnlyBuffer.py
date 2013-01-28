@@ -26,12 +26,12 @@ class SetReadOnlyBufferCommand(ReadOnlyBuffer, sublime_plugin.TextCommand):
         return not self.view.is_read_only()
 
     def description():
-        return "Sets the buffer to read-only state (saving the unsaved contents is still possible"
+        return "Sets the buffer to read-only state (saving the unsaved contents is still possible)"
 
     def run(self, edit):
         cache = self.get_plugin_file_cache()
         if(self.view.is_read_only()):
-            sublime.status_message("Current buffer is already read-only")
+            self.view.set_status("buffer-status", " RO ")
             return
 
         self.view.set_read_only(True)
@@ -39,7 +39,7 @@ class SetReadOnlyBufferCommand(ReadOnlyBuffer, sublime_plugin.TextCommand):
             cache[self.view.file_name()] = True
         self.settings.set("cache", cache)
         self.set_plugin_settings()
-        sublime.status_message("Current buffer set to read-only")
+        self.view.set_status("buffer-status", " RO ")
 
 
 class SetReadWriteBufferCommand(ReadOnlyBuffer, sublime_plugin.TextCommand):
@@ -52,12 +52,12 @@ class SetReadWriteBufferCommand(ReadOnlyBuffer, sublime_plugin.TextCommand):
         return self.view.is_read_only()
 
     def description():
-        return "Sets the buffer to read-write"
+        return "Sets the buffer to read-write state"
 
     def run(self, edit):
         cache = self.get_plugin_file_cache()
         if(not self.view.is_read_only()):
-            sublime.status_message("Current buffer is already read-write")
+            self.view.set_status("buffer-status", " RW ")
             return
 
         self.view.set_read_only(False)
@@ -65,10 +65,16 @@ class SetReadWriteBufferCommand(ReadOnlyBuffer, sublime_plugin.TextCommand):
             cache[self.view.file_name()] = False
         self.settings.set("cache", cache)
         self.set_plugin_settings()
-        sublime.status_message("Current buffer set to read-write")
+        self.view.set_status("buffer-status", " RW ")
 
 
 class ReadOnlyEventListener(ReadOnlyBuffer, sublime_plugin.EventListener):
+    def set_status(self, state, view):
+        if(state):
+            view.set_status("buffer-status", " RO ")
+        else:
+            view.set_status("buffer-status", " RW ")
+
     def on_clone(self, view):
         cache = self.get_plugin_file_cache()
         if(view.file_name() is not None):
@@ -76,10 +82,7 @@ class ReadOnlyEventListener(ReadOnlyBuffer, sublime_plugin.EventListener):
             if(file_name in cache):
                 state = cache.get(file_name)
                 view.set_read_only(state)
-                if(state):
-                    sublime.status_message("Current buffer set to read-only")
-                else:
-                    sublime.status_message("Current buffer set to read-write")
+                self.set_status(state, view)
 
     def on_load(self, view):
         cache = self.get_plugin_file_cache()
@@ -88,7 +91,28 @@ class ReadOnlyEventListener(ReadOnlyBuffer, sublime_plugin.EventListener):
             if(file_name in cache):
                 state = cache.get(file_name)
                 view.set_read_only(state)
-                if(state):
-                    sublime.status_message("Current buffer set to read-only")
-                else:
-                    sublime.status_message("Current buffer set to read-write")
+                self.set_status(state, view)
+
+    def on_new(self, view):
+        self.set_status(view.is_read_only(), view)
+
+    def on_close(self, view):
+        self.set_status(view.is_read_only(), view)
+
+    def on_pre_save(self, view):
+        self.set_status(view.is_read_only(), view)
+
+    def on_post_save(self, view):
+        self.set_status(view.is_read_only(), view)
+
+    def on_modified(self, view):
+        self.set_status(view.is_read_only(), view)
+
+    def on_selection_modified(self, view):
+        self.set_status(view.is_read_only(), view)
+
+    def on_activated(self, view):
+        self.set_status(view.is_read_only(), view)
+
+    def on_deactivated(self, view):
+        self.set_status(view.is_read_only(), view)
