@@ -7,7 +7,7 @@ the read-only/read-write state of an edited file between editing sessions using 
 
 Install with [Package Control](http://wbond.net/sublime_packages/package_control).
 
-`Command Palette` > `Package Control: Install Package` > `SublimeReadOnlyBuffer`
+`Command Palette` > `Package Control: Install Package` > `Read Only Buffer`
 
 Or clone this reporitory from GitHub into Sublime's Packages folder:
 
@@ -19,11 +19,11 @@ $ git clone https://github.com/crazybyte/SublimeReadOnlyBuffer.git
 
 You can edit the configuration/filename cache list via the menu entry.
 
-`Preferences` -> `Package Settings` -> `SublimeReadOnlyBuffer` -> `Settings - User`
+`Preferences` -> `Package Settings` -> `Read Only Buffer` -> `Settings - User`
 
 Or  
 
-`Command Palette` > `Preferences: SublimeReadOnlyBuffer Settings - User`
+`Command Palette` > `Preferences: Read Only Buffer Settings - User`
 
 ```json
 {

@@ -6,11 +6,11 @@
         "caption" : "Buffer: Unset read-only", "command" : "set_read_write_buffer"
     },
     {
-        "caption" : "Preferences: SublimeReadOnlyBuffer Settings - Default",
-        "command": "open_file", "args": {"file": "${packages}/SublimeReadOnlyBuffer/SublimeReadOnlyBuffer.sublime-settings"}
+        "caption" : "Preferences: Read Only Buffer Settings - Default",
+        "command": "open_file", "args": {"file": "${packages}/Read Only Buffer/SublimeReadOnlyBuffer.sublime-settings"}
     },
     {
-        "caption" : "Preferences: SublimeReadOnlyBuffer Settings - User",
-        "command": "open_file", "args": {"file": "${packages}/User/SublimeReadOnlyBuffer.sublime-settings"}
+        "caption" : "Preferences: Read Only Buffer Settings - User",
+        "command": "open_file", "args": {"file": "${packages}/User/Read Only Buffer.sublime-settings"}
     }
 ]
