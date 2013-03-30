@@ -31,7 +31,7 @@ class SetReadOnlyBufferCommand(ReadOnlyBuffer, sublime_plugin.TextCommand):
     def run(self, edit):
         cache = self.get_plugin_file_cache()
         if(self.view.is_read_only()):
-            self.view.set_status("buffer-status", " RO ")
+            self.view.set_status("buffer-status", "Read Only")
             return
 
         self.view.set_read_only(True)
@@ -39,7 +39,7 @@ class SetReadOnlyBufferCommand(ReadOnlyBuffer, sublime_plugin.TextCommand):
             cache[self.view.file_name()] = True
         self.settings.set("cache", cache)
         self.set_plugin_settings()
-        self.view.set_status("buffer-status", " RO ")
+        self.view.set_status("buffer-status", "Read Only")
 
 
 class SetReadWriteBufferCommand(ReadOnlyBuffer, sublime_plugin.TextCommand):
@@ -57,7 +57,7 @@ class SetReadWriteBufferCommand(ReadOnlyBuffer, sublime_plugin.TextCommand):
     def run(self, edit):
         cache = self.get_plugin_file_cache()
         if(not self.view.is_read_only()):
-            self.view.set_status("buffer-status", " RW ")
+            self.view.set_status("buffer-status", "")
             return
 
         self.view.set_read_only(False)
@@ -65,15 +65,15 @@ class SetReadWriteBufferCommand(ReadOnlyBuffer, sublime_plugin.TextCommand):
             cache[self.view.file_name()] = False
         self.settings.set("cache", cache)
         self.set_plugin_settings()
-        self.view.set_status("buffer-status", " RW ")
+        self.view.set_status("buffer-status", "")
 
 
 class ReadOnlyEventListener(ReadOnlyBuffer, sublime_plugin.EventListener):
     def set_status(self, state, view):
         if(state):
-            view.set_status("buffer-status", " RO ")
+            view.set_status("buffer-status", "Read Only")
         else:
-            view.set_status("buffer-status", " RW ")
+            view.set_status("buffer-status", "")
 
     def on_clone(self, view):
         cache = self.get_plugin_file_cache()
