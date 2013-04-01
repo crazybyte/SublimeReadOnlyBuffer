@@ -43,6 +43,8 @@ key binding `super + shift + u` or key binding `ctrl + alt + u` on Linux.
 
 # Contributors
 
+[Jeffrey Sadeli] (https://github.com/jsadeli)
+
 # License
 
 This plugin is licensed under the MIT license.
