@@ -1,0 +1,5 @@
+[
+    { "caption": "-", "id": "file" },
+    { "command": "set_read_only_buffer", "caption": "Buffer: Set read-only" },
+    { "command" : "set_read_write_buffer", "caption" : "Buffer: Unset read-only" }
+]
